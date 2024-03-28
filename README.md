@@ -16,7 +16,7 @@ This project is aimed at developing a cybersecurity application that implements 
 
 - **Frontend**: [React](https://reactjs.org/), [Material-UI](https://mui.com/)
 - **Backend**: [Node.js](https://nodejs.org/), [Starpi](https://strapi.io/)
-- **Database**: [MongoDB](https://www.mongodb.com/)
+- **Database**: [Postgres](https://www.postgresql.org/)
 - **Authentication**: [JWT (JSON Web Tokens)](https://jwt.io/)
 - **Authorization**: Role-based access control (RBAC)
 - **Encryption**: [crypto](https://www.npmjs.com/package/crypto-js), [OpenSSL](https://www.openssl.org/)

@@ -15,11 +15,11 @@ This project is aimed at developing a cybersecurity application that implements 
 ## Technologies Used
 
 - **Frontend**: [React](https://reactjs.org/), [Material-UI](https://mui.com/)
-- **Backend**: [Node.js](https://nodejs.org/), [Express.js](https://expressjs.com/)
+- **Backend**: [Node.js](https://nodejs.org/), [Starpi](https://strapi.io/)
 - **Database**: [MongoDB](https://www.mongodb.com/)
 - **Authentication**: [JWT (JSON Web Tokens)](https://jwt.io/)
 - **Authorization**: Role-based access control (RBAC)
-- **Encryption**: [bcrypt](https://www.npmjs.com/package/bcrypt), [OpenSSL](https://www.openssl.org/)
+- **Encryption**: [crypto](https://www.npmjs.com/package/crypto-js), [OpenSSL](https://www.openssl.org/)
 - **Containerization**: [Docker](https://www.docker.com/)
 
 ## Installation

@@ -1,40 +1,87 @@
-import React from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import React, { useState } from 'react';
+import { Typography, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
-
 import CustomTextField from '../../../components/forms/theme-elements/CustomTextField';
-import { Stack } from '@mui/system';
 
-const AuthRegister = ({ title, subtitle, subtext }) => (
+const AuthRegister = () => {
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:9999/api/auth/local/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      // Handle response data
+      console.log(data); // For testing purposes
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  return (
     <>
-        {title ? (
-            <Typography fontWeight="700" variant="h2" mb={1}>
-                {title}
-            </Typography>
-        ) : null}
+      <Typography fontWeight="700" variant="h2" mb={1}>
+        Register
+      </Typography>
 
-        {subtext}
+      <form onSubmit={handleSubmit}>
+        <CustomTextField
+          id="username"
+          name="username"
+          label="Username"
+          variant="outlined"
+          fullWidth
+          value={formData.username}
+          onChange={handleChange}
+        />{' '}
+        <br />
+        <CustomTextField
+          id="email"
+          name="email"
+          label="Email"
+          type="email"
+          variant="outlined"
+          fullWidth
+          value={formData.email}
+          onChange={handleChange}
+        />
+        <CustomTextField
+          id="password"
+          name="password"
+          label="Password"
+          type="password"
+          variant="outlined"
+          fullWidth
+          value={formData.password}
+          onChange={handleChange}
+        />
+        <Button color="primary" variant="contained" size="large" fullWidth type="submit">
+          Sign Up
+        </Button>
+      </form>
 
-        <Box>
-            <Stack mb={3}>
-                <Typography variant="subtitle1"
-                    fontWeight={600} component="label" htmlFor='name' mb="5px">Name</Typography>
-                <CustomTextField id="name" variant="outlined" fullWidth />
-
-                <Typography variant="subtitle1"
-                    fontWeight={600} component="label" htmlFor='email' mb="5px" mt="25px">Email Address</Typography>
-                <CustomTextField id="email" variant="outlined" fullWidth />
-
-                <Typography variant="subtitle1"
-                    fontWeight={600} component="label" htmlFor='password' mb="5px" mt="25px">Password</Typography>
-                <CustomTextField id="password" variant="outlined" fullWidth />
-            </Stack>
-            <Button color="primary" variant="contained" size="large" fullWidth component={Link} to="/auth/login">
-                Sign Up
-            </Button>
-        </Box>
-        {subtitle}
+      <Typography variant="subtitle1" textAlign="center" color="textSecondary">
+        Already have an account? <Link to="/login">Login</Link>
+      </Typography>
     </>
-);
+  );
+};
 
 export default AuthRegister;

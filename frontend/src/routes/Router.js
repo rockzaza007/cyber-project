@@ -24,7 +24,7 @@ const Router = [
     path: '/',
     element: <FullLayout />,
     children: [
-      { path: '/', element: <Navigate to="/dashboard" /> },
+      { path: '/', element: <Navigate to="/auth/login" /> },
       { path: '/dashboard', exact: true, element: <Dashboard /> },
       { path: '/sample-page', exact: true, element: <SamplePage /> },
       { path: '/icons', exact: true, element: <Icons /> },
@@ -34,6 +34,23 @@ const Router = [
       { path: '*', element: <Navigate to="/auth/404" /> },
     ],
   },
+
+  // {
+  //   path: '/page',
+  //   element: <FullLayout />,
+  //   children: [
+  //     { path: '/page', element: <Navigate to="/dashboard" /> },
+  //     { path: '/page/dashboard', exact: true, element: <Dashboard /> },
+  //     { path: '/page/sample-page', exact: true, element: <SamplePage /> },
+  //     { path: '/page/icons', exact: true, element: <Icons /> },
+  //     { path: '/page/ui/typography', exact: true, element: <TypographyPage /> },
+  //     { path: '/page/ui/shadow', exact: true, element: <Shadow /> },
+  //     { path: '/page/api/users', exact: true, element: <apiUser /> },
+  //     { path: '*', element: <Navigate to="/auth/404" /> },
+  //   ],
+  // },
+
+
   {
     path: '/auth',
     element: <BlankLayout />,
